@@ -18,7 +18,7 @@ class User extends Migration
 			$table->increments('id');	//唯一id
 			$table->string('name');		//真实姓名
 			$table->string('username');	//用户名
-			$table->char('password', 32);	//密码(sha1加密)
+			$table->char('password', 40);	//密码(sha1加密)
 			$table->string('email');	//邮箱
 			$table->string('tel');	//手机号
 			$table->string('province')->nullable();	//所处省

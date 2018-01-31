@@ -19,7 +19,7 @@ class Doctor extends Migration
 			$table->string('name');	//真实姓名
 			$table->string('username');	//用户名
 			$table->string('tel');	//手机(登陆凭证)
-			$table->char('password', 32);	//密码 (sha1加密)
+			$table->char('password', 40);	//密码 (sha1加密)
 			$table->char('card', 18);	//身份证号
 			$table->string('hospital');	//所在医院
 			$table->string('area');	//所在科室

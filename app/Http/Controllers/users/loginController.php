@@ -8,7 +8,7 @@
 
 namespace App\Http\Controllers\users;
 
-
+session_start();
 use App\Http\Controllers\Controller;
 use App\Providers\LoginService;
 use Illuminate\Http\Request;
@@ -24,9 +24,12 @@ class loginController extends Controller
 		}
 		$login = new LoginService('users');
 		$data = ['tel' => $request->input('tel'), 'password' => $request->input('password')];
-		if ($login->login($data)) {
-			$sessionId = session_id();
-			return response()->json();
+		$user = $login->login($data);
+		if ($user) {
+			$_SESSION['id'] = $user;
+			return response()->json(['code' => 0, 'msg' => 'success']);
+		} else {
+			return response()->json(['code' => -2, 'password wrong']);
 		}
 	}
 

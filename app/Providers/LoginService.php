@@ -27,9 +27,13 @@ class LoginService
 	 * */
 	public function login($request)
 	{
-		$password = DB::table($this->table)->select('password')->where('tel', $request['tel'])->get();
-		if (sha1($request['password']) === $password) {
-			return true;
+		$user = DB::table($this->table)
+			->select('id')
+			->where('tel', $request['tel'])
+			->where('password', sha1($request['password']))
+			->first();
+		if ($user) {
+			return $user->id;
 		} else {
 			return false;
 		}

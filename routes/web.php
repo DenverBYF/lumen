@@ -12,10 +12,15 @@
 */
 
 $router->get('/', function () use ($router) {
-    echo "Code start";
+    //echo "Code start";
 });
 $router->group(['as' => 'register', 'prefix' => 'register'], function () use ($router) {
 	$router->post('user', ['uses' => 'users\registerController@index']);
 	$router->post('doctor', ['uses' => 'doctors\registerController@index']);
+});
+$router->group(['as' => 'login', 'prefix' => 'login'], function () use ($router) {
+	$router->post('user', ['uses' => 'users\loginController@index']);
+	$router->post('doctor', ['uses' => 'doctors\loginController@index']);
+	$router->post('manager', ['uses' => 'manager\loginController@index']);
 });
 
