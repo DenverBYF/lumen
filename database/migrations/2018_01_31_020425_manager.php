@@ -17,6 +17,7 @@ class Manager extends Migration
 		Schema::create('manager', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('name');
+			$table->string('tel');
 			$table->char('password', 40);
 		});
     }
