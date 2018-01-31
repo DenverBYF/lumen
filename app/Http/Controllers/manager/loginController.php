@@ -40,7 +40,7 @@ class loginController extends Controller
 	{
 		try {
 			$this->validate($data, [
-				'tel' => 'required|exists:managers',
+				'tel' => 'required|exists:manager',
 				'password' => 'required',
 			]);
 		} catch (ValidationException $e) {
