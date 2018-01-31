@@ -23,7 +23,7 @@ class loginController extends Controller
 		if ($ret !== true) {
 			return response()->json(['code' => -1, 'msg' => $ret]);
 		}
-		$login = new LoginService('managers');
+		$login = new LoginService('manager');
 		$data = ['tel' => $request->input('tel'), 'password' => $request->input('password')];
 		$user = $login->login($data);
 		if ($user) {
