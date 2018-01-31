@@ -12,6 +12,10 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    echo "Code start";
 });
-$router->get('example', ['as' => 'example', 'uses' => 'ExampleController@test']);
+$router->group(['as' => 'register', 'prefix' => 'register'], function () use ($router) {
+	$router->post('user', ['uses' => 'users\registerController@index']);
+	$router->post('doctor', ['uses' => 'doctors\registerController@index']);
+});
+

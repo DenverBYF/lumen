@@ -23,9 +23,9 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
-// $app->withFacades();
+ $app->withFacades();	//开启门面模式
 
-// $app->withEloquent();
+ $app->withEloquent();	//开启orm
 
 /*
 |--------------------------------------------------------------------------
