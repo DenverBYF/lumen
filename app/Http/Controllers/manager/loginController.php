@@ -28,7 +28,9 @@ class loginController extends Controller
 		$user = $login->login($data);
 		if ($user) {
 			$_SESSION['id'] = $user;
-			return response()->json(['code' => 0, 'msg' => 'success']);
+			$_SESSION['type'] = 'manager';
+			$sessionId = session_id();
+			return response()->json(['code' => 0, 'msg' => $sessionId]);
 		} else {
 			return response()->json(['code' => -2, 'password wrong']);
 		}
