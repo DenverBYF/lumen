@@ -26,6 +26,7 @@ class Doctor extends Migration
 			$table->string('title')->nullable();	//个人职称,可空
 			$table->string('desc')->nullable();	//个人简介,可空
 			$table->string('email');	//邮箱
+			$table->integer('user_type')->nullable();	//医师(1) or 医生(2)
 			$table->string('img_url')->nullable();	//头像地址
 			$table->integer('status')->default(0);	//审核状态,未审核为0,通过后设为1,未通过设为2
 			$table->string('reason')->nullable();	//审核未通过原因
