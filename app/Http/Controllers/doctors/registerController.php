@@ -29,6 +29,7 @@ class registerController extends Controller
 			'password' => sha1($request->input('password')),
 			'card' => $request->input('card'),
 			'hospital' => $request->input('hospital'),
+			'area' => $request->input('area'),
 			'desc' => $request->input('desc'),
 			'created_at' => date('Y-m-d h:i:sa', time()),
 		]);
