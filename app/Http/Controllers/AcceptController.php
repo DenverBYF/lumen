@@ -19,7 +19,7 @@ class AcceptController extends Controller
 	{
 		$this->doctor = DB::table('doctors')->select('id', 'status_type')->where('id', $id)->first();
 		if ($this->judgeType(1)) {
-			if (DB::table('doctors')->where('id', $id)->update(['status' => 2])) {
+			if (DB::table('doctors')->where('id', $id)->update(['status' => 3])) {
 				return response()->json(['code' => 0, 'msg' => 'success']);
 			}
 		} else {
@@ -33,12 +33,18 @@ class AcceptController extends Controller
 	{
 		$this->doctor = DB::table('doctors')->select('id', 'status_type')->where('id', $id)->first();
 		if ($this->judgeType(2)){
-			if (DB::table('doctors')->where('id', $id)->update(['status' => 2])) {
+			if (DB::table('doctors')->where('id', $id)->update(['status' => 3])) {
 				return response()->json(['code' => 0, 'msg' => 'success']);
 			}
 		} else {
 			return response()->json(['code' => -2, 'msg' => '申请类型与审批类型不一致']);
 		}
+
+	}
+
+	//审核通过群组创建
+	public function acceptGroup($id)
+	{
 
 	}
 
