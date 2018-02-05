@@ -18,6 +18,9 @@ class GroupUser extends Migration
 			$table->increments('id');	//主键
 			$table->integer('gid')->index();	//群id
 			$table->integer('uid')->index();	//用户id
+			$table->integer('status')->default(0);	//状态 1 通过  2 未通过
+			$table->integer('type');
+			$table->index(['uid', 'gid', 'type']);	//联合索引
 			$table->timestamps();
 		});
     }

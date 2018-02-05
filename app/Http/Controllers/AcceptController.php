@@ -45,7 +45,21 @@ class AcceptController extends Controller
 	//审核通过群组创建
 	public function acceptGroup($id)
 	{
-
+		$group = DB::table('group')->select('id', 'status')->where('id', $id)->first();
+		if (empty($group)) {
+			return response()->json(['code' => -2, 'msg' => '不存在此群']);
+		}
+		if ($group->status != 1) {
+			return response()->json(['code' => -3, 'msg' => '此群已通过审核']);
+		}
+		$row = DB::table('group')->where('id', $id)->update([
+			'status' => 3
+		]);
+		if ($row) {
+			return response()->json(['code' => 0, 'msg' => 'success']);
+		} else {
+			return response()->json(['code' => -4, 'msg' => '审批失败']);
+		}
 	}
 
 	//判断申请类型
